@@ -33,7 +33,7 @@ def criar_novo_registro(file_name):
     colunas = eval(file_name)
     print('INCLUSÃO', file_name, '\n')
     for coluna in colunas:
-        print('Informe', coluna)
+        print(f'Informe {coluna}: ')
         valor = input()
         novo[coluna] = valor
     data[id] = novo
@@ -46,7 +46,7 @@ def ler_registro(file_name):
     identificador = None
     sim = True
     while sim:
-        identificador = input('Entre com o ID:')
+        identificador = input('Entre com o ID: ')
         if identificador in data.keys():
             registro = data[identificador]
             print('Registro =', registro)
@@ -70,11 +70,11 @@ def atualizar_registro(file_name):
         finalizar_programa()
     colunas = eval(file_name)
     for coluna in colunas:
-        valor = input('Informe {coluna}: ')
+        valor = input(f'Informe {coluna}: ')
         registro[coluna] = valor
     data[identificador] = registro
     escrever_json(data, file_name)
-    print('Registro {identificador} alterado!')
+    print(f'Registro {identificador} alterado!')
 
 
 # função para remover um novo registro em um arquivo json  a partir de um ID
@@ -138,38 +138,58 @@ def limpar_tela():
 
 
 def operacao(tabela):
-    opcoes = ['1', '9']
+    opcoes = ['1', '2', '3', '4', '5', '9']
     ativo = True
     while ativo:
         limpar_tela()
         print('O que você deseja fazer na base', tabela, ':\n\n'
                                                          '(1) Criar novo registro.\n'
+                                                         '(2) Atualizar um registro.\n'
+                                                         '(3) Excluir um registro.\n'
+                                                         '(4) Buscar registros.\n'
+                                                         '(5) Listar registros.\n'
                                                          '(9) Voltar menu.\n\n'
                                                          'Faça sua escolha: ')
         opcao = input().lower()
 
         if opcao not in opcoes:
-            input('Opção inválida! Tente novamente ...')
+            input('Opção inválida! Tente novamente ...: ')
         else:
             limpar_tela()
             if opcao == '1':
                 criar_novo_registro(tabela)
+
+            if opcao == '2':
+                atualizar_registro(tabela)
+
             elif opcao == '9':
                 ativo = False
 
 
 def menu():
-    opcoes = ['1', '9']
+    opcoes = ['1', '2', '3', '4', '5', '9']
     ativo = True
     while ativo:
         limpar_tela()
         opcao = input('Selecione a opção desejada:\n\n'
                       '(1) Gerenciar estudantes.\n'
+                      '(2) Gerenciar professores.\n'
+                      '(3) Gerenciar disciplinas.\n'
+                      '(4) Gerenciar turmas.\n'
+                      '(5) Gerenciar matrículas.\n'
                       '(9) Sair.\n\n'
                       'Faça sua escolha: ').lower()
         if opcao in opcoes:
             if opcao == '1':
                 operacao(tabela1)
+            elif opcao == '2':
+                operacao(tabela2)
+            elif opcao == '3':
+                operacao(tabela3)
+            elif opcao == '4':
+                operacao(tabela4)
+            elif opcao == '5':
+                operacao(tabela5)
             elif opcao == '9':
                 ativo = False
             else:
@@ -180,11 +200,20 @@ def menu():
 
 if __name__ == '__main__':
     # definindo os nomes das colunas para a tabela estudantes
-    estudantes = ['matrícula', 'nome', 'sobrenome']
+    estudantes = ['matrícula_do_estudante', 'nome_do_estudante', 'sobrenome_do_estudante']
     tabela1 = 'estudantes'  # nome da tabela deve ser o mesmo nome da variável
 
-    # Seguindo o mesmo exemplo de criação das tabelas pode-se criar quantas
-    # forem necessárias
+    professores = ['codigo_do_professor', 'nome_do_professor', 'sobrenome_do_professor']
+    tabela2 = 'professores'
+
+    disciplinas = ['codigo_da_disciplina', 'nome_da_disciplina']
+    tabela3 = 'disciplinas'
+
+    turmas = ['codigo_da_turma', 'codigo_do_professor', 'codigo_da_disciplina']
+    tabela4 = 'turmas'
+
+    matriculas = ['codigo_da_turma', 'codigo_do_estudante']
+    tabela5 = 'matriculas'
 
     # chamada principal do programa
     menu()
