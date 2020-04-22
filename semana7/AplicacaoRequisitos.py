@@ -212,19 +212,19 @@ def menu():
 
 
 if __name__ == '__main__':
-    estudantes = ['matrícula do estudante', 'nome_do_estudante', 'sobrenome_do_estudante']
+    estudantes = ['Matrícula do estudante', 'Nome do estudante', 'Sobrenome do estudante']
     tabela1 = 'estudantes'  # nome da tabela deve ser o mesmo nome da variável
 
-    professores = ['codigo_do_professor', 'nome_do_professor', 'sobrenome_do_professor']
+    professores = ['Codigo do professor', 'Nome do professor', 'Sobrenome do professor']
     tabela2 = 'professores'
 
-    disciplinas = ['codigo_da_disciplina', 'nome_da_disciplina']
+    disciplinas = ['Codigo da disciplina', 'Nome da disciplina']
     tabela3 = 'disciplinas'
 
-    turmas = ['codigo_da_turma', 'codigo_do_professor', 'codigo_da_disciplina']
+    turmas = ['Codigo da turma', 'Codigo do professor', 'Codigo da disciplina']
     tabela4 = 'turmas'
 
-    matriculas = ['codigo_da_turma', 'codigo_do_estudante']
+    matriculas = ['Codigo da turma', 'Codigo do estudante']
     tabela5 = 'matriculas'
 
     menu()
