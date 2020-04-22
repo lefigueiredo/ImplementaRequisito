@@ -122,10 +122,14 @@ def listar_registro(file_name):
     print('LISTAGEM', file_name, '\n')
     if len(data) == 0:
         print('Base vazia!')
-        # função precisa ser complementada
-    # else:
 
-    input('Tecle uma tecla para continuar ...')
+    else:
+        for id, dicionario in data.items():
+            print(f'\nId = {id}')
+            for chave, valor in dicionario.items():
+                print(f'{chave}: {valor}')
+
+    input('\nTecle uma tecla para continuar ...')
 
 
 def finalizar_programa():
@@ -161,6 +165,15 @@ def operacao(tabela):
 
             if opcao == '2':
                 atualizar_registro(tabela)
+
+            if opcao == '3':
+                remover_registro(tabela)
+
+            if opcao == '4':
+                buscar_por_coluna(tabela)
+
+            if opcao == '5':
+                listar_registro(tabela)
 
             elif opcao == '9':
                 ativo = False
@@ -199,8 +212,7 @@ def menu():
 
 
 if __name__ == '__main__':
-    # definindo os nomes das colunas para a tabela estudantes
-    estudantes = ['matrícula_do_estudante', 'nome_do_estudante', 'sobrenome_do_estudante']
+    estudantes = ['matrícula do estudante', 'nome_do_estudante', 'sobrenome_do_estudante']
     tabela1 = 'estudantes'  # nome da tabela deve ser o mesmo nome da variável
 
     professores = ['codigo_do_professor', 'nome_do_professor', 'sobrenome_do_professor']
@@ -215,5 +227,4 @@ if __name__ == '__main__':
     matriculas = ['codigo_da_turma', 'codigo_do_estudante']
     tabela5 = 'matriculas'
 
-    # chamada principal do programa
     menu()
