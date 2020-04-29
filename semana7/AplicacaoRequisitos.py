@@ -260,6 +260,201 @@ def categorias(tabela):
         matrículas()
 
 
+# PRINTS layout CATEGORIAS do menu com tela de erro
+def categorias_erro(tabela):
+
+    def estudantes():
+        print('|' + '=' * 79 + '|')
+        print('|' + 'bUNNi'.center(79) + '|')
+        print('|' + '=' * 79 + '|')
+        print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+        print('|' +
+              cor.SUBLI +
+              'HOME'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI + cor.BGBRANCO +
+              'ESTUDANTES'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'PROFESSORES'.center(13) +
+              cor.FIM + '|'
+              + cor.SUBLI +
+              'DISCIPLINAS'.center(13) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'TURMAS'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'MATRÍCULAS'.center(12) +
+              cor.FIM + '|')
+        print('|' + ' ' * 79 + '|')
+        print('| O que deseja realizar:' + ' ' * 56 + '|')
+        print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
+        print('|     ('+ cor.NEGR +'1'+ cor.FIM +') Criar novo estudante' + ' ' * 15+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     ('+ cor.NEGR +'2'+ cor.FIM +') Atualizar um estudante' + ' ' * 13+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     ('+ cor.NEGR +'3'+ cor.FIM +') Excluir um estudante' + ' ' * 15 +cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     ('+ cor.NEGR +'4'+ cor.FIM +') Buscar um estudante' + ' ' * 16+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
+        print('|     ('+ cor.NEGR +'5'+ cor.FIM +') Listar estudantes' + ' ' * 46 + '(\(\   |')
+        print('|     ('+ cor.NEGR +'0'+ cor.FIM +') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
+        sleep(3)
+
+    def professores():
+        print('|' + '=' * 79 + '|')
+        print('|' + 'bUNNi'.center(79) + '|')
+        print('|' + '=' * 79 + '|')
+        print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+        print('|' +
+              cor.SUBLI +
+              'HOME'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'ESTUDANTES'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI + cor.BGBRANCO +
+              'PROFESSORES'.center(13) +
+              cor.FIM + '|'
+              + cor.SUBLI +
+              'DISCIPLINAS'.center(13) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'TURMAS'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'MATRÍCULAS'.center(12) +
+              cor.FIM + '|')
+        print('|' + ' ' * 79 + '|')
+        print('| O que deseja realizar:' + ' ' * 56 + '|')
+        print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
+        print('|     (' + cor.NEGR + '1' + cor.FIM + ') Criar novo professor' + ' ' * 15+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '2' + cor.FIM + ') Atualizar um professor' + ' ' * 13+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '3' + cor.FIM + ') Excluir um professor' + ' ' * 15 +cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '4' + cor.FIM + ') Buscar um professor' + ' ' * 16+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
+        print('|     (' + cor.NEGR + '5' + cor.FIM + ') Listar professores' + ' ' * 45 + '(\(\   |')
+        print('|     (' + cor.NEGR + '0' + cor.FIM + ') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
+        sleep(3)
+
+    def disciplinas():
+        print('|' + '=' * 79 + '|')
+        print('|' + 'bUNNi'.center(79) + '|')
+        print('|' + '=' * 79 + '|')
+        print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+        print('|' +
+              cor.SUBLI +
+              'HOME'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'ESTUDANTES'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'PROFESSORES'.center(13) +
+              cor.FIM + '|'
+              + cor.SUBLI + cor.BGBRANCO +
+              'DISCIPLINAS'.center(13) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'TURMAS'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'MATRÍCULAS'.center(12) +
+              cor.FIM + '|')
+        print('|' + ' ' * 79 + '|')
+        print('| O que deseja realizar:' + ' ' * 56 + '|')
+        print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
+        print('|     (' + cor.NEGR + '1' + cor.FIM + ') Criar nova disciplina' + ' ' * 14+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '2' + cor.FIM + ') Atualizar uma disciplina' + ' ' * 11+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '3' + cor.FIM + ') Excluir uma disciplina' + ' ' * 13 +cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '4' + cor.FIM + ') Buscar uma disciplina' + ' ' * 14+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
+        print('|     (' + cor.NEGR + '5' + cor.FIM + ') Listar disciplinas' + ' ' * 45 + '(\(\   |')
+        print('|     (' + cor.NEGR + '0' + cor.FIM + ') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
+        sleep(3)
+
+    def turmas():
+        print('|' + '=' * 79 + '|')
+        print('|' + 'bUNNi'.center(79) + '|')
+        print('|' + '=' * 79 + '|')
+        print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+        print('|' +
+              cor.SUBLI +
+              'HOME'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'ESTUDANTES'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'PROFESSORES'.center(13) +
+              cor.FIM + '|'
+              + cor.SUBLI +
+              'DISCIPLINAS'.center(13) +
+              cor.FIM + '|' +
+              cor.SUBLI + cor.BGBRANCO +
+              'TURMAS'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'MATRÍCULAS'.center(12) +
+              cor.FIM + '|')
+        print('|' + ' ' * 79 + '|')
+        print('| O que deseja realizar:' + ' ' * 56 + '|')
+        print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
+        print('|     (' + cor.NEGR + '1' + cor.FIM + ') Criar nova turma' + ' ' * 19+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '2' + cor.FIM + ') Atualizar uma turma' + ' ' * 16+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '3' + cor.FIM + ') Excluir uma turma' + ' ' * 18 +cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '4' + cor.FIM + ') Buscar uma turma' + ' ' * 19+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
+        print('|     (' + cor.NEGR + '5' + cor.FIM + ') Listar turmas' + ' ' * 50 + '(\(\   |')
+        print('|     (' + cor.NEGR + '0' + cor.FIM + ') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
+        sleep(3)
+
+    def matrículas():
+        print('|' + '=' * 79 + '|')
+        print('|' + 'bUNNi'.center(79) + '|')
+        print('|' + '=' * 79 + '|')
+        print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+        print('|' +
+              cor.SUBLI +
+              'HOME'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'ESTUDANTES'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'PROFESSORES'.center(13) +
+              cor.FIM + '|'
+              + cor.SUBLI +
+              'DISCIPLINAS'.center(13) +
+              cor.FIM + '|' +
+              cor.SUBLI +
+              'TURMAS'.center(12) +
+              cor.FIM + '|' +
+              cor.SUBLI + cor.BGBRANCO +
+              'MATRÍCULAS'.center(12) +
+              cor.FIM + '|')
+        print('|' + ' ' * 79 + '|')
+        print('| O que deseja realizar:' + ' ' * 56 + '|')
+        print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
+        print('|     (' + cor.NEGR + '1' + cor.FIM + ') Criar nova matrícula' + ' ' * 15+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '2' + cor.FIM + ') Atualizar uma matrícula' + ' ' * 12+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '3' + cor.FIM + ') Excluir uma matrícula' + ' ' * 14 +cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
+        print('|     (' + cor.NEGR + '4' + cor.FIM + ') Buscar uma matrícula' + ' ' * 15+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
+        print('|     (' + cor.NEGR + '5' + cor.FIM + ') Listar matrículas' + ' ' * 46 + '(\(\   |')
+        print('|     (' + cor.NEGR + '0' + cor.FIM + ') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
+        sleep(3)
+
+    if tabela == tabela1:
+        estudantes()
+    if tabela == tabela2:
+        professores()
+    if tabela == tabela3:
+        disciplinas()
+    if tabela == tabela4:
+        turmas()
+    if tabela == tabela5:
+        matrículas()
+
+
 # PRINTS layout cabecalhos menus de categorias
 def ilustra_cabecalho(file_name):
     print('|' + '=' * 79 + '|')
@@ -382,10 +577,6 @@ def ilustra_cabecalho(file_name):
     print('|' + ' ' * 72 + '(\(\   |')
 
 
-# PRINTS layout inputs menus de categorias
-
-
-
 # JSON escreve
 def escrever_json(data, file_name):
     with open(file_name + '.json', 'w') as f:
@@ -423,6 +614,7 @@ def ler_json(file_name):
 #     data[id] = novo
 #     escrever_json(data, file_name)
 def criar_novo_registro(file_name):
+    # PRINTS layout inputs menus de categorias
     def ilustra_colunas():
 
         if coluna == colunas[0]:
@@ -597,7 +789,7 @@ def operacao(tabela):
         opcao = input().lower()
 
         if opcao not in opcoes:
-            input('Opção inválida! Tente novamente ...: ')
+            categorias_erro(tabela)
         else:
             limpar_tela()
             if opcao == '1':
