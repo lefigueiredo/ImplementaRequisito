@@ -477,7 +477,7 @@ def criar_novo_registro(file_name):
 
     for coluna in colunas:
         ilustra_colunas()
-        valor = input()
+        valor = input("|")
         novo[coluna] = valor
     data[id] = novo
     escrever_json(data, file_name)
