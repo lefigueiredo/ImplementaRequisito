@@ -1,6 +1,7 @@
 import json
 from time import sleep
 
+# CORES classe para efeito em print
 class cor:
     ROXO = '\033[95m'
     CYAN = '\033[96m'
@@ -20,15 +21,17 @@ class cor:
 def cabecalho(a, texto = ""):
     print(f'{"="*40}\n\033[1m{str(a+texto).center(40)}\033[0;0m\n{"="*40}\n')
 
+# PRINTS logo bUNNi
 def logo():
     print()
     print(' =======================')
     print(' |    BEM VINDO AO     |')
-    print(' |  SISTEMA ACADEMICO (\(\ ')
+    print(' |  SISTEMA ACADÊMICO (\(\ ')
     print(' |        bUNNi       ( -.-)')
     print(' ==================== c(")(")')
 
 
+# PRINTS Layout menu inicial
 def layout_menu():
     print('|'+'='*79+'|')
     print('|'+'bUNNi'.center(79)+'|')
@@ -47,6 +50,7 @@ def layout_menu():
     print('|' +cor.SUBLI+' '*72+cor.FIM+'c(")(")|')
 
 
+# PRINTS Layout menu inicial com tela de erro
 def layout_menu_erro():
     print('|'+'='*79+'|')
     print('|'+'bUNNi'.center(79)+'|')
@@ -65,6 +69,8 @@ def layout_menu_erro():
     print('|' +cor.SUBLI+' '*72+cor.FIM+'c(")(")|')
     sleep(3)
 
+
+# PRINTS layout CATEGORIAS do menu
 def categorias(tabela):
 
     def estudantes():
@@ -254,15 +260,14 @@ def categorias(tabela):
         matrículas()
 
 
-# função para escrever em um arquivo json (olhar na pasta do seu projeto, será criado um
-# arquivo .json com o nome da tabela passada por parâmetro)
+# JSON escreve
 def escrever_json(data, file_name):
     with open(file_name + '.json', 'w') as f:
         json.dump(data, f, indent=4)
         f.close()
 
 
-# função para ler em um arquivo json e colocar em memória
+# JSON ler json e guardar na memoria
 def ler_json(file_name):
     data = {}
     try:
@@ -275,7 +280,7 @@ def ler_json(file_name):
         return data
 
 
-# função para criar um novo registro em um arquivo json
+# JSON cria novo registro
 def criar_novo_registro(file_name):
     data = ler_json(file_name)
     novo = {}
@@ -293,6 +298,7 @@ def criar_novo_registro(file_name):
     escrever_json(data, file_name)
 
 
+# JSON le registros
 def ler_registro(file_name):
     data = ler_json(file_name)
     registro = None
@@ -313,7 +319,7 @@ def ler_registro(file_name):
     return registro, identificador
 
 
-# função para atualizar um registro em um arquivo json a partir de um ID
+# JSON atualiza um registro a partir de um ID
 def atualizar_registro(file_name):
     data = ler_json(file_name)
     cabecalho("Atualização de ",file_name)
@@ -330,7 +336,7 @@ def atualizar_registro(file_name):
     print(f'Registro {identificador} alterado!')
 
 
-# função para remover um novo registro em um arquivo json  a partir de um ID
+# JSON remove regitro a partir do ID
 def remover_registro(file_name):
     data = ler_json(file_name)
     cabecalho("Exclusão de ",file_name)
@@ -349,7 +355,7 @@ def remover_registro(file_name):
             print('A remoção do registro:', identificador, 'foi cancelada!')
 
 
-# função para buscar registros em um arquivo json  a partir de um texto
+# JSON busca registro a partir de texto
 def buscar_por_coluna(file_name):
     data = ler_json(file_name)
     cabecalho("Buscando ",file_name)
@@ -370,6 +376,7 @@ def buscar_por_coluna(file_name):
                 break
 
 
+# JSON lista registros
 def listar_registro(file_name):
     data = ler_json(file_name)
     cabecalho("Listagem de ")
@@ -385,15 +392,16 @@ def listar_registro(file_name):
     input('\nTecle uma tecla para continuar ...')
 
 
+# Finaliza o programa
 def finalizar_programa():
     print('Finalizando o programa...')
     exit(0)
 
-
+# PRINTS Limpa a tela
 def limpar_tela():
     print('\n' * 100)
 
-
+# MENU chama prints de menus
 def operacao(tabela):
     opcoes = ['1', '2', '3', '4', '5', '0']
     ativo = True
@@ -426,6 +434,7 @@ def operacao(tabela):
                 ativo = False
 
 
+# MENU menu principal
 def menu():
     opcoes = ['1', '2', '3', '4', '5', '0']
     ativo = True
@@ -470,6 +479,6 @@ if __name__ == '__main__':
     matriculas = ['Codigo da turma', 'Codigo do estudante']
     tabela5 = 'matriculas'
 
-    logo()
-    sleep(3)
-    menu()
+    logo()      #printa logo
+    sleep(3)    # espera 3 segundos
+    menu()      #chama o menu
