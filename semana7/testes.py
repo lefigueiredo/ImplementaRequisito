@@ -1,6 +1,3 @@
-import json
-from time import sleep
-
 class cor:
     ROXO = '\033[95m'
     CYAN = '\033[96m'
@@ -17,55 +14,10 @@ class cor:
     FIM = '\033[0m'
 
 
-def cabecalho(a, texto = ""):
-    print(f'{"="*40}\n\033[1m{str(a+texto).center(40)}\033[0;0m\n{"="*40}\n')
 
-def logo():
-    print()
-    print(' =======================')
-    print(' |    BEM VINDO AO     |')
-    print(' |  SISTEMA ACADEMICO (\(\ ')
-    print(' |        bUNNi       ( -.-)')
-    print(' ==================== c(")(")')
+    #print '\033[42;1;33m'+'Isto eh amarelo negrito com fundo verde'+'\033[0;0m'
 
-
-def layout_menu():
-    print('|'+'='*79+'|')
-    print('|'+'bUNNi'.center(79)+'|')
-    print('|'+'='*79+'|')
-    print('|'+cor.SUBLI+' '*79+cor.FIM+'|')
-    print('|'+cor.SUBLI+cor.BGBRANCO+'HOME'.center(12)+cor.FIM+'|'+cor.SUBLI+'ESTUDANTES'.center(12)+cor.FIM+'|'+cor.SUBLI+'PROFESSORES'.center(13)+cor.FIM+'|'+cor.SUBLI+'DISCIPLINAS'.center(13)+cor.FIM+'|'+cor.SUBLI+'TURMAS'.center(12)+cor.FIM+'|'+cor.SUBLI+'MATRÍCULAS'.center(12)+cor.FIM+'|')
-    print('|'+' '*79+'|')
-    print('| Selecione o menu desejado:' + ' ' * 52 + '|')
-    print('|'+' '*79+'|')
-    print('|     ('+ cor.NEGR +'1'+ cor.FIM +') Estudantes' + ' ' * 60 + '|')
-    print('|     ('+ cor.NEGR +'2'+ cor.FIM +') Professores' + ' ' * 59 + '|')
-    print('|     ('+ cor.NEGR +'3'+ cor.FIM +') Disciplinas' + ' ' * 59 + '|')
-    print('|     ('+ cor.NEGR +'4'+ cor.FIM +') Turmas' + ' ' * 64 + '|')
-    print('|     ('+ cor.NEGR +'5'+ cor.FIM +') Matrículas' + ' ' * 53 + '(\(\   |')
-    print('|     ('+ cor.NEGR +'0'+ cor.FIM +') Sair' + ' ' * 59 + '( -.-) |')
-    print('|' +cor.SUBLI+' '*72+cor.FIM+'c(")(")|')
-
-
-def layout_menu_erro():
-    print('|'+'='*79+'|')
-    print('|'+'bUNNi'.center(79)+'|')
-    print('|'+'='*79+'|')
-    print('|'+cor.SUBLI+' '*79+cor.FIM+'|')
-    print('|'+cor.SUBLI+cor.BGBRANCO+'HOME'.center(12)+cor.FIM+'|'+cor.SUBLI+'ESTUDANTES'.center(12)+cor.FIM+'|'+cor.SUBLI+'PROFESSORES'.center(13)+cor.FIM+'|'+cor.SUBLI+'DISCIPLINAS'.center(13)+cor.FIM+'|'+cor.SUBLI+'TURMAS'.center(12)+cor.FIM+'|'+cor.SUBLI+'MATRÍCULAS'.center(12)+cor.FIM+'|')
-    print('|'+' '*79+'|')
-    print('| Selecione o menu desejado:' + ' ' * 52 + '|')
-    print('|'+' '*45+cor.SUBLI+cor.AMARELO+' '*18+cor.FIM+' '*16+'|')
-    print('|     ('+ cor.NEGR +'1'+ cor.FIM +') Estudantes' +' '*25+cor.AMARELO+'|'+cor.VERMELHO+'      AVISO!!     '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
-    print('|     ('+ cor.NEGR +'2'+ cor.FIM +') Professores' +' '*24+cor.AMARELO+'|'+cor.VERMELHO+'  Opção inválida! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
-    print('|     ('+ cor.NEGR +'3'+ cor.FIM +') Disciplinas' +' '*24+cor.AMARELO+'|'+cor.VERMELHO+' Tente Novamente! '+cor.AMARELO+'|'+cor.FIM+ ' ' * 15 + '|')
-    print('|     ('+ cor.NEGR +'4'+ cor.FIM +') Turmas' +' '*29+cor.AMARELO+'|'+cor.SUBLI+' '*18+cor.FIM+cor.AMARELO+'|'+cor.FIM+' '*15+'|')
-    print('|     ('+ cor.NEGR +'5'+ cor.FIM +') Matrículas' + ' ' * 53 + '(\(\   |')
-    print('|     ('+ cor.NEGR +'0'+ cor.FIM +') Sair' + ' ' * 59 + '( -.-) |')
-    print('|' +cor.SUBLI+' '*72+cor.FIM+'c(")(")|')
-    sleep(3)
-
-def categorias(tabela):
+def opcoes(tabela):
 
     def estudantes():
         print('|' + '=' * 79 + '|')
@@ -241,157 +193,19 @@ def categorias(tabela):
         print('|     (' + cor.NEGR + '5' + cor.FIM + ') Listar matrículas' + ' ' * 46 + '(\(\   |')
         print('|     (' + cor.NEGR + '0' + cor.FIM + ') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
         print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
-
-    if tabela == tabela1:
+    tabelinha = tabela
+    if tabelinha == tabela1:
         estudantes()
-    if tabela == tabela2:
+    if tabelinha == tabela2:
         professores()
-    if tabela == tabela3:
+    if tabelinha == tabela3:
         disciplinas()
-    if tabela == tabela4:
+    if tabelinha == tabela4:
         turmas()
-    if tabela == tabela5:
+    if tabelinha == tabela5:
         matrículas()
 
 
-# função para escrever em um arquivo json (olhar na pasta do seu projeto, será criado um
-# arquivo .json com o nome da tabela passada por parâmetro)
-def escrever_json(data, file_name):
-    with open(file_name + '.json', 'w') as f:
-        json.dump(data, f, indent=4)
-        f.close()
-
-
-# função para ler em um arquivo json e colocar em memória
-def ler_json(file_name):
-    data = {}
-    try:
-        with open(file_name + '.json', 'r') as f:
-            data = json.load(f)
-            f.close()
-            return data
-    except FileNotFoundError:
-        escrever_json(data, file_name)
-        return data
-
-
-# função para criar um novo registro em um arquivo json
-def criar_novo_registro(file_name):
-    data = ler_json(file_name)
-    novo = {}
-    id = '1'
-    ids = [int(k) for k in data.keys()]
-    if len(ids) != 0:
-        id = str(max(ids) + 1)
-    colunas = eval(file_name)
-    cabecalho("Inclusão de ",file_name)
-    for coluna in colunas:
-        print(f'Insira {coluna}: ')
-        valor = input()
-        novo[coluna] = valor
-    data[id] = novo
-    escrever_json(data, file_name)
-
-
-def ler_registro(file_name):
-    data = ler_json(file_name)
-    registro = None
-    identificador = None
-    sim = True
-    while sim:
-        identificador = input('Entre com o ID: ')
-        if identificador in data.keys():
-            registro = data[identificador]
-            print('Registro =', registro)
-            sim = False
-        else:
-            print('ID sem registro!')
-            resposta = input('Deseja buscar outro ID? (s/n)').lower()
-            if 'n' in resposta:
-                sim = False
-
-    return registro, identificador
-
-
-# função para atualizar um registro em um arquivo json a partir de um ID
-def atualizar_registro(file_name):
-    data = ler_json(file_name)
-    cabecalho("Atualização de ",file_name)
-    registro, identificador = ler_registro(file_name)
-    if registro is None or identificador is None:
-        print('O ID do registro não pode ser nulo!')
-        finalizar_programa()
-    colunas = eval(file_name)
-    for coluna in colunas:
-        valor = input(f'Informe {coluna}: ')
-        registro[coluna] = valor
-    data[identificador] = registro
-    escrever_json(data, file_name)
-    print(f'Registro {identificador} alterado!')
-
-
-# função para remover um novo registro em um arquivo json  a partir de um ID
-def remover_registro(file_name):
-    data = ler_json(file_name)
-    cabecalho("Exclusão de ",file_name)
-    registro, identificador = ler_registro(file_name)
-    if registro is None or identificador is None:
-        print('O ID do registro não pode ser nulo!')
-    else:
-        print('Confirma a remoção do ID:', identificador, '? (s/n)\n'
-                                                          'OBS: Essa operação não pode ser desfeita!')
-        confirma = input().lower()
-        if 's' in confirma:
-            data.pop(identificador)
-            escrever_json(data, file_name)
-            print('Registro', identificador, 'removido!')
-        else:
-            print('A remoção do registro:', identificador, 'foi cancelada!')
-
-
-# função para buscar registros em um arquivo json  a partir de um texto
-def buscar_por_coluna(file_name):
-    data = ler_json(file_name)
-    cabecalho("Buscando ",file_name)
-    if len(data) == 0:
-        print('Base vazia!')
-    else:
-        while True:
-            resultados = {}
-            texto = input('Entre com o termo que deseja buscar: ').lower()
-            for identificador, registro in data.items():
-                for coluna, valor in registro.items():
-                    if texto in valor.lower():
-                        resultados[identificador] = registro
-                        continue
-            print(resultados)
-            refazer = input('Deseja buscar por outro termo? (s/n)')
-            if 's' not in refazer:
-                break
-
-
-def listar_registro(file_name):
-    data = ler_json(file_name)
-    cabecalho("Listagem de ")
-    if len(data) == 0:
-        print('Base vazia!')
-
-    else:
-        for id, dicionario in data.items():
-            print(f'\nId = {id}')
-            for chave, valor in dicionario.items():
-                print(f'{chave}: {valor}')
-
-    input('\nTecle uma tecla para continuar ...')
-
-
-def finalizar_programa():
-    print('Finalizando o programa...')
-    exit(0)
-
-
-def limpar_tela():
-    print('\n' * 100)
 
 
 def operacao(tabela):
@@ -399,8 +213,14 @@ def operacao(tabela):
     ativo = True
     while ativo:
         limpar_tela()
-        categorias(tabela)
-
+        print('O que você deseja fazer na base', tabela, ':\n\n'
+                                                         '(1) Criar novo registro.\n'
+                                                         '(2) Atualizar um registro.\n'
+                                                         '(3) Excluir um registro.\n'
+                                                         '(4) Buscar registros.\n'
+                                                         '(5) Listar registros.\n'
+                                                         '(0) Voltar menu.\n\n'
+                                                         'Faça sua escolha: ')
         opcao = input().lower()
 
         if opcao not in opcoes:
@@ -426,14 +246,32 @@ def operacao(tabela):
                 ativo = False
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 def menu():
-    opcoes = ['1', '2', '3', '4', '5', '0']
+    opcoes = ['1', '2', '3', '4', '5', '9']
     ativo = True
     while ativo:
         limpar_tela()
-        layout_menu()
-        opcao = input()
-
+        opcao = input('Selecione a opção desejada:\n\n'
+                      '(1) Gerenciar estudantes.\n'
+                      '(2) Gerenciar professores.\n'
+                      '(3) Gerenciar disciplinas.\n'
+                      '(4) Gerenciar turmas.\n'
+                      '(5) Gerenciar matrículas.\n'
+                      '(9) Sair.\n\n'
+                      'Faça sua escolha: ').lower()
         if opcao in opcoes:
             if opcao == '1':
                 operacao(tabela1)
@@ -445,31 +283,9 @@ def menu():
                 operacao(tabela4)
             elif opcao == '5':
                 operacao(tabela5)
-            elif opcao == '0':
+            elif opcao == '9':
                 ativo = False
-        else:
-            limpar_tela()
-            layout_menu_erro()
+            else:
+                print('Opção inválida! Tente novamente.')
 
     finalizar_programa()
-
-
-if __name__ == '__main__':
-    estudantes = ['Matrícula do estudante', 'Nome do estudante', 'Sobrenome do estudante']
-    tabela1 = 'estudantes'  # nome da tabela deve ser o mesmo nome da variável
-
-    professores = ['Codigo do professor', 'Nome do professor', 'Sobrenome do professor']
-    tabela2 = 'professores'
-
-    disciplinas = ['Codigo da disciplina', 'Nome da disciplina']
-    tabela3 = 'disciplinas'
-
-    turmas = ['Codigo da turma', 'Codigo do professor', 'Codigo da disciplina']
-    tabela4 = 'turmas'
-
-    matriculas = ['Codigo da turma', 'Codigo do estudante']
-    tabela5 = 'matriculas'
-
-    logo()
-    sleep(3)
-    menu()
