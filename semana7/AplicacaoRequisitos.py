@@ -563,18 +563,6 @@ def ilustra_cabecalho(file_name):
               cor.FIM + '|')
     print('|' + ' ' * 79 + '|')
 
-    if file_name == tabela1:
-        print('| >>> Inclusão de: ' +file_name+' ' * 51 + '|')
-    elif file_name == tabela2:
-        print('| >>> Inclusão de: ' + file_name + ' ' * 50 + '|')
-    elif file_name == tabela3:
-        print('| >>> Inclusão de: ' + file_name + ' ' * 50 + '|')
-    elif file_name == tabela4:
-        print('| >>> Inclusão de: ' + file_name + ' ' * 55 + '|')
-    elif file_name == tabela5:
-        print('| >>> Inclusão de: ' + file_name + ' ' * 51 + '|')
-    print('|' + ' ' * 79 + '|')
-    print('|' + ' ' * 72 + '(\(\   |')
 
 
 # JSON escreve
@@ -666,6 +654,17 @@ def criar_novo_registro(file_name):
     colunas = eval(file_name)
 
     ilustra_cabecalho(file_name)
+    if file_name == tabela1:
+        print('| >>> Inclusão de ' +file_name+' ' * 52 + '|')
+    elif file_name == tabela2:
+        print('| >>> Inclusão de ' + file_name + ' ' * 51 + '|')
+    elif file_name == tabela3:
+        print('| >>> Inclusão de ' + file_name + ' ' * 51 + '|')
+    elif file_name == tabela4:
+        print('| >>> Inclusão de ' + file_name + ' ' * 56 + '|')
+    elif file_name == tabela5:
+        print('| >>> Inclusão de ' + file_name + ' ' * 52 + '|')
+    print('|' + ' ' * 72 + '(\(\   |')
 
     for coluna in colunas:
         ilustra_colunas()
