@@ -1,6 +1,7 @@
 import json
 from time import sleep
 
+
 # CORES classe para efeito em print
 class cor:
     ROXO = '\033[95m'
@@ -17,9 +18,6 @@ class cor:
     SUBLI = '\033[4m'
     FIM = '\033[0m'
 
-
-def cabecalho(a, texto = ""):
-    print(f'{"="*40}\n\033[1m{str(a+texto).center(40)}\033[0;0m\n{"="*40}\n')
 
 # PRINTS logo bUNNi
 def logo():
@@ -564,7 +562,6 @@ def ilustra_cabecalho(file_name):
     print('|' + ' ' * 79 + '|')
 
 
-
 # JSON escreve
 def escrever_json(data, file_name):
     with open(file_name + '.json', 'w') as f:
@@ -586,21 +583,6 @@ def ler_json(file_name):
 
 
 # JSON cria novo registro
-# def criar_novo_registro(file_name):
-#     data = ler_json(file_name)
-#     novo = {}
-#     id = '1'
-#     ids = [int(k) for k in data.keys()]
-#     if len(ids) != 0:
-#         id = str(max(ids) + 1)
-#     colunas = eval(file_name)
-#     cabecalho("Inclusão de ",file_name)
-#     for coluna in colunas:
-#         print(f'Insira {coluna}: ')
-#         valor = input()
-#         novo[coluna] = valor
-#     data[id] = novo
-#     escrever_json(data, file_name)
 def criar_novo_registro(file_name):
     # PRINTS layout inputs menus de categorias
     def ilustra_colunas():
@@ -643,8 +625,6 @@ def criar_novo_registro(file_name):
             print('|     Insira ' + coluna + ':' + ' ' * 48 + '|')
             print('|' + ' ' * 79 + '|')
 
-        # print('|     ('+ cor.NEGR +'0'+ cor.FIM +') Voltar ao menu inicial' + ' ' * 41 + '( -.-) |')
-        # print('|' + cor.SUBLI + ' ' * 72 + cor.FIM + 'c(")(")|')
     data = ler_json(file_name)
     novo = {}
     id = '1'
@@ -668,7 +648,7 @@ def criar_novo_registro(file_name):
 
     for coluna in colunas:
         ilustra_colunas()
-        valor = input("|")
+        valor = input("| ")
         novo[coluna] = valor
     data[id] = novo
     escrever_json(data, file_name)
@@ -680,16 +660,34 @@ def ler_registro(file_name):
     registro = None
     identificador = None
     sim = True
+    titulo = file_name
+
     while sim:
-        identificador = input('Entre com o ID: ')
+        print('|     Digite o Id:' + ' ' * 55 + '( -.-) |')
+        print('|' + ' ' * 72 + 'c(")(")|')
+        identificador = input('| ')
         if identificador in data.keys():
             registro = data[identificador]
-            print('Registro =', registro)
+            if len(identificador) == 1:
+                print('|' + ' '*2 + cor.BGBRANCO + 'Id: ' + identificador + ' '*65 + cor.FIM + ' '* 7 + '|'  )
+
+            elif len(identificador) > 1:
+                print('|' + ' '*2 + cor.BGBRANCO + 'Id: ' + identificador + ' '*64 + cor.FIM + ' '* 7 + '|'  )
+
+            for chave, valor in registro.items():
+                print('|' + ' ' * 4 + chave + ': ' + valor)
+            print('|  '+cor.BGBRANCO+' '*70+ cor.FIM+' '*7+'|')
+            print('|'+' '*79+'|')
             sim = False
+
         else:
-            print('ID sem registro!')
-            resposta = input('Deseja buscar outro ID? (s/n)').lower()
-            if 'n' in resposta:
+            print('|' + ' ' * 30 + cor.SUBLI + cor.AMARELO + ' ' * 20 + cor.FIM + ' ' * 29 + '|')
+            print('|' + ' ' * 29 + cor.AMARELO + '|' + cor.VERMELHO + ' Id não cadastrado! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print('|' + ' ' * 29 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 20 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print('|' + ' ' * 79 + '|')
+
+            resposta = input('|'+' '*4+'Deseja buscar outro ID? (s/n)').lower()
+            if resposta == 'n':
                 sim = False
 
     return registro, identificador
@@ -698,57 +696,180 @@ def ler_registro(file_name):
 # JSON atualiza um registro a partir de um ID
 def atualizar_registro(file_name):
     data = ler_json(file_name)
-    cabecalho("Atualização de ",file_name)
+    ilustra_cabecalho(file_name)
+
+    if file_name == tabela1:
+        print('| >>> Atualização de ' + file_name + ' ' * 49 + '|')
+    elif file_name == tabela2:
+        print('| >>> Atualização de ' + file_name + ' ' * 48 + '|')
+    elif file_name == tabela3:
+        print('| >>> Atualização de ' + file_name + ' ' * 48 + '|')
+    elif file_name == tabela4:
+        print('| >>> Atualização de ' + file_name + ' ' * 53 + '|')
+    elif file_name == tabela5:
+        print('| >>> Atualização de ' + file_name + ' ' * 49 + '|')
+    print('|' + ' ' * 72 + '(\(\   |')
+
     registro, identificador = ler_registro(file_name)
     if registro is None or identificador is None:
-        print('O ID do registro não pode ser nulo!')
+        print('|' + ' ' * 29 + cor.SUBLI + cor.AMARELO + ' ' * 23 + cor.FIM + ' ' * 27 + '|')
+        print(
+            '|' + ' ' * 28 + cor.AMARELO + '|' + cor.VERMELHO + ' Impossível continuar! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 26 + '|')
+        print(
+            '|' + ' ' * 28 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 23 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 26 + '|')
+        print('|' + ' ' * 79 + '|')
         finalizar_programa()
+
     colunas = eval(file_name)
     for coluna in colunas:
-        valor = input(f'Informe {coluna}: ')
+        valor = input(f'|  Informe {coluna}: ')
         registro[coluna] = valor
     data[identificador] = registro
     escrever_json(data, file_name)
-    print(f'Registro {identificador} alterado!')
+
+    print('|'+' '*31+cor.AMARELO+cor.SUBLI+' '*17+cor.FIM+' '*31+'|')
+    print('|'+' '*30+cor.AMARELO+'|'+cor.VERMELHO+'  Dado alterado  '+cor.AMARELO+'|'+cor.FIM+' '*30+'|')
+    print('|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + '   com sucesso!  ' + cor.AMARELO + '|' + cor.FIM + ' ' * 30 + '|')
+    print('|' + ' ' * 30 + cor.AMARELO + '|' + cor.SUBLI + ' '*17+cor.FIM+cor.AMARELO+ '|' + cor.FIM + ' ' * 30 + '|')
+    print('|'+cor.SUBLI+' '*79+cor.FIM+'|')
+    sleep(3)
 
 
 # JSON remove regitro a partir do ID
 def remover_registro(file_name):
     data = ler_json(file_name)
-    cabecalho("Exclusão de ",file_name)
+    ilustra_cabecalho(file_name)
+
+    if file_name == tabela1:
+        print('| >>> Remoção de ' + file_name + ' ' * 53 + '|')
+    elif file_name == tabela2:
+        print('| >>> Remoção de ' + file_name + ' ' * 52 + '|')
+    elif file_name == tabela3:
+        print('| >>> Remoção de ' + file_name + ' ' * 52 + '|')
+    elif file_name == tabela4:
+        print('| >>> Remoção de ' + file_name + ' ' * 57 + '|')
+    elif file_name == tabela5:
+        print('| >>> Remoção de ' + file_name + ' ' * 53 + '|')
+    print('|' + ' ' * 72 + '(\(\   |')
+
     registro, identificador = ler_registro(file_name)
     if registro is None or identificador is None:
-        print('O ID do registro não pode ser nulo!')
+        print('|' + ' ' * 29 + cor.SUBLI + cor.AMARELO + ' ' * 23 + cor.FIM + ' ' * 27 + '|')
+        print(
+            '|' + ' ' * 28 + cor.AMARELO + '|' + cor.VERMELHO + ' Impossível continuar! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 26 + '|')
+        print(
+            '|' + ' ' * 28 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 23 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 26 + '|')
+        print('|' + ' ' * 79 + '|')
+        finalizar_programa()
+
     else:
-        print('Confirma a remoção do ID:', identificador, '? (s/n)\n'
-                                                          'OBS: Essa operação não pode ser desfeita!')
-        confirma = input().lower()
+        if len(identificador) == 1:
+            print('|  Confirma a remoção do ID: '+ identificador + ' (s/n)?'+' ' * 43 + '|')
+        elif len(identificador) > 1:
+            print('|  Confirma a remoção do ID: '+ identificador + ' (s/n)?'+' ' * 42 + '|')
+
+        print('|'+' '*79+'|')
+        print('|    '+cor.AMARELO+ 'OBS: '+ cor.VERMELHO+'Essa operação não pode ser desfeita!'+cor.FIM+ ' '*34+'|')
+        confirma = input('| ').lower()
         if 's' in confirma:
             data.pop(identificador)
             escrever_json(data, file_name)
-            print('Registro', identificador, 'removido!')
+
+            print('|' + ' ' * 30 + cor.SUBLI + cor.AMARELO + ' ' * 20 + cor.FIM + ' ' * 29 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.VERMELHO + '    Id removido     ' + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.VERMELHO + '    com sucesso!    ' + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 20 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print('|' + ' ' * 79 + '|')
+            sleep(3)
+
         else:
-            print('A remoção do registro:', identificador, 'foi cancelada!')
+            print('|' + ' ' * 30 + cor.SUBLI + cor.AMARELO + ' ' * 20 + cor.FIM + ' ' * 29 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.VERMELHO + '  A remoção do Id   ' + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.VERMELHO + '   foi cancelada!   ' + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print(
+                '|' + ' ' * 29 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 20 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
+            print('|' + ' ' * 79 + '|')
+            sleep(3)
 
 
 # JSON busca registro a partir de texto
 def buscar_por_coluna(file_name):
     data = ler_json(file_name)
-    cabecalho("Buscando ",file_name)
+    ilustra_cabecalho(file_name)
+
     if len(data) == 0:
-        print('Base vazia!')
+        print('|' + ' ' * 31 + cor.SUBLI + cor.AMARELO + ' ' * 15 + cor.FIM + ' ' * 33 + '|')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + '  Base vazia!  ' + cor.AMARELO + '|' + cor.FIM + ' ' * 32 + '|')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + ' Insira dados! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 25 + '(\(\   |')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 15 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 25 + '( -.-) |')
+        print('|' + cor.SUBLI + ' ' * 72 + 'c(")(")|')
+
     else:
         while True:
             resultados = {}
-            texto = input('Entre com o termo que deseja buscar: ').lower()
+            lista = []
+            print('|    Entre com o termo que deseja buscar:' + ' ' * 39 + '|')
+            texto = input('| ').lower()
+            desenho = 1
+
             for identificador, registro in data.items():
                 for coluna, valor in registro.items():
+                    lista.append((identificador,coluna, valor))
                     if texto in valor.lower():
                         resultados[identificador] = registro
                         continue
-            print(resultados)
-            refazer = input('Deseja buscar por outro termo? (s/n)')
-            if 's' not in refazer:
+
+            for id, dicionarioall in resultados.items():
+                if len(id) == 1:
+                    print('|' + ' ' * 72 + '(\(\   |')
+                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 63 + cor.FIM + ' '*2 + '( -.-) |')
+                    for chave, valor in dicionarioall.items():
+                        desenho+=1
+                        if desenho == 2:
+                            ihu = len(('| ' + chave + ': ' + valor))
+                            ihaa = 73 - ihu
+                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('c(")(")|'))
+                        else:
+                            ihu = len(('| ' + chave + ': ' + valor))
+                            ihaa = 80 - ihu
+                            print(('| ' + chave + ': ' + valor)+(' ' * ihaa) + ('|'))
+                        if desenho ==4 or desenho ==5:
+                            desenho = 1
+
+                    print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM +' '*9+ '|')
+                    print('|' + ' ' * 79 + '|')
+
+                elif len(id) > 1:
+                    print('|' + ' ' * 72 + '(\(\   |')
+                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 62 + cor.FIM + ' '*2 + '( -.-) |')
+                    for chave, valor in dicionarioall.items():
+                        desenho += 1
+                        if desenho == 2:
+                            ihu = len(('| ' + chave + ': ' + valor))
+                            ihaa = 73 - ihu
+                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('c(")(")|'))
+                        else:
+                            ihu = len(('| ' + chave + ': ' + valor))
+                            ihaa = 80 - ihu
+                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
+
+                        if desenho == 4 or desenho == 5:
+                            desenho = 1
+
+                    print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
+                    print('|' + ' ' * 79 + '|')
+
+            print('|' + ' ' * 79 + '|')
+            refazer = input('|    Deseja buscar por outro termo (s/n)?'+' '*39+'|')
+            if 'n' in refazer:
                 break
 
 
