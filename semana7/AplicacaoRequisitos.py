@@ -579,7 +579,7 @@ def ler_json(file_name):
 
 
 # JSON cria novo registro
-def criar_novo_registro(file_name):
+5def criar_novo_registro(file_name):
     # PRINTS layout inputs menus de categorias
     def ilustra_colunas():
 
@@ -910,7 +910,26 @@ def listar_registro(file_name):
 
 # Finaliza o programa
 def finalizar_programa():
-    print('Finalizando o programa...')
+    print('|' + '=' * 79 + '|')
+    print('|' + 'bUNNi'.center(79) + '|')
+    print('|' + '=' * 79 + '|')
+    print('|' + cor.SUBLI + ' ' * 79 + cor.FIM + '|')
+    print('|' + cor.SUBLI + cor.BGBRANCO + 'HOME'.center(12) + cor.FIM + '|' + cor.SUBLI + 'ESTUDANTES'.center(
+        12) + cor.FIM + '|' + cor.SUBLI + 'PROFESSORES'.center(13) + cor.FIM + '|' + cor.SUBLI + 'DISCIPLINAS'.center(
+        13) + cor.FIM + '|' + cor.SUBLI + 'TURMAS'.center(12) + cor.FIM + '|' + cor.SUBLI + 'MATRÍCULAS'.center(
+        12) + cor.FIM + '|')
+    print('|' + ' ' * 79 + '|')
+    print('| >>> Finalizando o programa...' + ' ' * 49 + '|')
+    print('|' + ' ' * 79 + '|')
+    print('|' + ('=' * 23).center(79) + '|')
+    print('|' + ('|  SISTEMA ACADÊMICO  |').center(79) + '|')
+    print('|' + ' ' * 28 + '|        bUNNi       (\(\ ' + ' ' * 25 + '|')
+    print('|' + ' ' * 28 + '|      ATÉ BREVE     ( -.-)' + ' ' * 24 + '|')
+    print('|' + ' ' * 28 + '==================== c(")(")' + ' ' * 23 + '|')
+    print('|' + ' ' * 79 + '|')
+    print('|' + ' ' * 79 + '|')
+    print('|' + cor.SUBLI + ' ' * 64 + cor.FIM + '(⌐■_■) GG EASY|')
+    sleep(3)
     exit(0)
 
 # PRINTS Limpa a tela
