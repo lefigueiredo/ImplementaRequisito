@@ -14,18 +14,11 @@ class cor:
     FIM = '\033[0m'
 
 
-for chave, valor in dicionarioall.items():
-    desenho += 1
-    if desenho == 2:
-        ihu = len(('| ' + chave + ': ' + valor))
-        ihaa = 73 - ihu
-        print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('c(")(")|'))
-    else:
-        ihu = len(('| ' + chave + ': ' + valor))
-        ihaa = 80 - ihu
-        print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
-    if desenho == 4 or desenho == 5:
-        desenho = 1
+print('| >>> Lista completa' + ' ' * 50 + '(\(\   |')
+print('|' + ' ' * 72 + '( -.-) |')
+print('|' + ' ' * 72 + 'c(")(")|')
 
-print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
-print('|' + ' ' * 79 + '|')
+
+
+
+

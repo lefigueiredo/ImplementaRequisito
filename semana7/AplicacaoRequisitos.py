@@ -4,11 +4,6 @@ from time import sleep
 
 # CORES classe para efeito em print
 class cor:
-    ROXO = '\033[95m'
-    CYAN = '\033[96m'
-    CYANESC = '\033[36m'
-    AZUL = '\033[94m'
-    VERDE = '\033[92m'
     AMARELO = '\033[1;93m'
     VERMELHO = '\033[1;91m'
 
@@ -16,6 +11,7 @@ class cor:
 
     NEGR = '\033[1m'
     SUBLI = '\033[4m'
+
     FIM = '\033[0m'
 
 
@@ -686,7 +682,8 @@ def ler_registro(file_name):
             print('|' + ' ' * 29 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 20 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 28 + '|')
             print('|' + ' ' * 79 + '|')
 
-            resposta = input('|'+' '*4+'Deseja buscar outro ID? (s/n)').lower()
+            print('|'+' '*4+'Deseja buscar outro ID? (s/n)')
+            resposta = input("|").lower()
             if resposta == 'n':
                 sim = False
 
@@ -810,15 +807,18 @@ def buscar_por_coluna(file_name):
             '|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + ' Insira dados! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 25 + '(\(\   |')
         print(
             '|' + ' ' * 30 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 15 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 25 + '( -.-) |')
-        print('|' + cor.SUBLI + ' ' * 72 + 'c(")(")|')
+        print('|' + cor.SUBLI + ' ' * 72 + cor.FIM +  'c(")(")|')
 
     else:
         while True:
             resultados = {}
             lista = []
-            print('|    Entre com o termo que deseja buscar:' + ' ' * 39 + '|')
+            print('| >>> Busca por termo' + ' ' * 59 + '|')
+            print('|' + ' ' * 72 + '(\(\   |')
+            print('|     Digite o termo que deseja buscar:' + ' ' * 34 + '( -.-) |')
+            print('|' + ' ' * 72 + 'c(")(")|')
+
             texto = input('| ').lower()
-            desenho = 1
 
             for identificador, registro in data.items():
                 for coluna, valor in registro.items():
@@ -829,42 +829,26 @@ def buscar_por_coluna(file_name):
 
             for id, dicionarioall in resultados.items():
                 if len(id) == 1:
-                    print('|' + ' ' * 72 + '(\(\   |')
-                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 63 + cor.FIM + ' '*2 + '( -.-) |')
+                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 63 + cor.FIM + ' '*9 + '|')
                     for chave, valor in dicionarioall.items():
-                        desenho+=1
-                        if desenho == 2:
-                            ihu = len(('| ' + chave + ': ' + valor))
-                            ihaa = 73 - ihu
-                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('c(")(")|'))
-                        else:
-                            ihu = len(('| ' + chave + ': ' + valor))
-                            ihaa = 80 - ihu
-                            print(('| ' + chave + ': ' + valor)+(' ' * ihaa) + ('|'))
-                        if desenho ==4 or desenho ==5:
-                            desenho = 1
+                        ihu = len(('|    ' + chave + ': ' + valor))
+                        ihaa = 80 - ihu
+                        print(('|    ' + chave + ': ' + valor)+(' ' * ihaa) + ('|'))
 
                     print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM +' '*9+ '|')
                     print('|' + ' ' * 79 + '|')
+                    print('|' + ' ' * 79 + '|')
 
                 elif len(id) > 1:
-                    print('|' + ' ' * 72 + '(\(\   |')
-                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 62 + cor.FIM + ' '*2 + '( -.-) |')
-                    for chave, valor in dicionarioall.items():
-                        desenho += 1
-                        if desenho == 2:
-                            ihu = len(('| ' + chave + ': ' + valor))
-                            ihaa = 73 - ihu
-                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('c(")(")|'))
-                        else:
-                            ihu = len(('| ' + chave + ': ' + valor))
-                            ihaa = 80 - ihu
-                            print(('| ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
 
-                        if desenho == 4 or desenho == 5:
-                            desenho = 1
+                    print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 62 + cor.FIM + ' '*9 + '|')
+                    for chave, valor in dicionarioall.items():
+                        ihu = len(('|    ' + chave + ': ' + valor))
+                        ihaa = 80 - ihu
+                        print(('|    ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
 
                     print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
+                    print('|' + ' ' * 79 + '|')
                     print('|' + ' ' * 79 + '|')
 
             print('|' + ' ' * 79 + '|')
@@ -876,17 +860,52 @@ def buscar_por_coluna(file_name):
 # JSON lista registros
 def listar_registro(file_name):
     data = ler_json(file_name)
-    cabecalho("Listagem de ")
+    ilustra_cabecalho(file_name)
+
+    print('| >>> Listagem completa' + ' ' * 50 + '(\(\   |')
+    print('|' + ' ' * 72 + '( -.-) |')
+    print('|' + ' ' * 72 + 'c(")(")|')
+
     if len(data) == 0:
-        print('Base vazia!')
+        print('|' + ' ' * 31 + cor.SUBLI + cor.AMARELO + ' ' * 15 + cor.FIM + ' ' * 33 + '|')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + '  Base vazia!  ' + cor.AMARELO + '|' + cor.FIM + ' ' * 32 + '|')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.VERMELHO + ' Insira dados! ' + cor.AMARELO + '|' + cor.FIM + ' ' * 32 + '|')
+        print(
+            '|' + ' ' * 30 + cor.AMARELO + '|' + cor.SUBLI + ' ' * 15 + cor.FIM + cor.AMARELO + '|' + cor.FIM + ' ' * 32 + '|')
+        print('|' + ' ' * 79 + '|')
+
 
     else:
         for id, dicionario in data.items():
-            print(f'\nId = {id}')
-            for chave, valor in dicionario.items():
-                print(f'{chave}: {valor}')
+            if len(id) == 1:
+                print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 63 + cor.FIM + ' ' * 9 + '|')
+                for chave, valor in dicionario.items():
+                    ihu = len(('|    ' + chave + ': ' + valor))
+                    ihaa = 80 - ihu
+                    print(('|    ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
 
-    input('\nTecle uma tecla para continuar ...')
+                print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
+                print('|' + ' ' * 79 + '|')
+                print('|' + ' ' * 79 + '|')
+
+            elif len(id) > 1:
+
+                print('|' + ' ' * 2 + cor.BGBRANCO + 'Id: ' + id + ' ' * 62 + cor.FIM + ' ' * 9 + '|')
+                for chave, valor in dicionario.items():
+                    ihu = len(('|    ' + chave + ': ' + valor))
+                    ihaa = 80 - ihu
+                    print(('|    ' + chave + ': ' + valor) + (' ' * ihaa) + ('|'))
+
+                print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
+                print('|' + ' ' * 79 + '|')
+                print('|' + ' ' * 79 + '|')
+
+
+    input('|    Tecle uma tecla para continuar ...'+' '*41+'|')
+
+
 
 
 # Finaliza o programa
