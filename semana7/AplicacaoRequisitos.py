@@ -749,6 +749,10 @@ def segundomenumatricula(file_name):
         print('|  ' + cor.BGBRANCO + ' ' * 68 + cor.FIM + ' ' * 9 + '|')
         print('|  ' + ' ' * 77 + '|')
         print('|  ' + ' ' * 77 + '|')
+    else:
+        print('|  ' + ' ' * 77 + '|')
+        print('|'+cor.VERMELHO+'	ERRO: '+cor.AMARELO+'Nenhuma matrícula cadastrada para esse estudante!'+cor.FIM+' '*21+'|')
+        print('|  ' + ' ' * 77 + '|')
 
     ihu = len(('|  Tecle uma tecla para continuar ...'))
     ihaa = 80 - ihu
